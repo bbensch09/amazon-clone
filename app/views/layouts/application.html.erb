@@ -1,19 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html>
+<head>
+  <title>Brital.ly</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">Brital.ly</li>
+          <li class="has-submenu">
+            <a href="#">Cat #1</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="/categories/1">Pants</a></li>
+              <li><a href="/categories/2">Shoes</a></li>
+              <li><a href="/categories/3">Shirts</a></li>
+            </ul>
+          </li>
+          <li><a href="/products">View all Products</a></li>
+          <li><a href="/categories">View all Categories</a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <% if current_user %>
+          <li> Welcome <%=current_user.email %></li>
+          <%= link_to "Manage Users", users_path, :class => "button" if current_user.admin? %>
+          <li><%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "button" %> </li>
+          <% else %>
+          <li><%= link_to "Log in", new_user_session_path, :class => "button" %> </li>
+          <li><%= link_to "Sign Up", new_user_registration_path, :class => "button" %> </li>
+          <% end %>
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-
+  <div class="container">
     <%= yield %>
-
-  </body>
+  </div>
+</body>
 </html>
