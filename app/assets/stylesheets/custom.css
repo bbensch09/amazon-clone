@@ -1,3 +1,11 @@
+
+
 .top-bar a {
   color: #fff;
+}
+
+.container {
+  width: 100%;
+  max-width: 75em;
+  margin: auto;
 }

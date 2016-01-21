@@ -1,14 +1,19 @@
-<p>
-  <strong> Product Title:</strong>
-  Title: <%= @product.title %><br>
-  Description: <%= @product.description %><br>
-  <%= image_tag(@product.image_url) %>
-  Price: <%= number_to_currency(@product.price, unit: "$", separator: ".", precision:2) %><br>
-  Quantity Available: <%= @product.inventory_quantity %><br></p>
+<div class="row">
+  <div class="small-12 medium-4 large-4 columns">
+    <%= image_tag(@product.image_url) %>
+  </div>
+  <div class="small-12 medium-8 large-8 columns">
 
- <% if admin?  %>
-<%= link_to 'Edit', edit_product_path(@product), :class => "button" %>
-<%= link_to 'Destroy', product_path(@product), :class => "button",
-      method: :delete %><br>
-<% end %>
+    <h1><%= @product.title %></h1><br>
+    <h5><%= @product.description %></h5>
+    Price: <%= number_to_currency(@product.price, unit: "$", separator: ".", precision:2) %><br>
+    Quantity Available: <%= @product.inventory_quantity %><br></p>
+
+    <% if admin?  %>
+    <%= link_to 'Edit', edit_product_path(@product), :class => "button" %>
+    <%= link_to 'Destroy', product_path(@product), :class => "button",
+    method: :delete %><br>
+    <% end %>
+  </div>
+</div>
 <%= link_to 'Back to All Products', products_path,  :class => "crud-link" %>
