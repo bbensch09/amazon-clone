@@ -1,0 +1,20 @@
+<p>
+  <strong> Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong> Logged in from:</strong>
+  <%= @user.current_sign_in_ip %>
+</p>
+
+<% if current_user.admin?  %>
+  <p>
+    <strong> Admin?</strong>
+    <%= @user.admin? %>
+  </p>
+
+<% end %>
+
+
+<%= link_to 'Edit', edit_user_path(@user), :class => "crud-link" %>

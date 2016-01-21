@@ -1,0 +1,49 @@
+<%= form_for @product do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%= pluralize(@product.errors.count, "error") %> Prevented this product from being saved:</h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li class="errors"> <%= msg %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :title, "Enter your title" %> <br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description, "Enter your description" %> <br>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :image_url, "Enter the product's image link" %> <br>
+    <%= f.text_field :image_url %>
+  </p>
+  <p>
+    <%= f.label :price, "Price:" %> <br>
+    <%= f.number_field :price, :step => 'any' %>
+  </p>
+  <p>
+    <%= f.label :inventory_quantity, "Inventory Quantity:" %> <br>
+    <%= f.number_field :inventory_quantity %>
+  </p>
+  <p>
+    <%= f.label :category_id, "Select Category" %> <br>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </p>
+  <p>
+    <%= f.label :brand_id, "Brand ID:" %> <br>
+    <%= f.number_field :brand_id %>
+  </p>
+  <p>
+    <%= f.label :supplier_id, "Supplier ID:" %> <br>
+    <%= f.number_field :supplier_id %>
+  </p>
+  <p>
+    <%= f.submit 'Create or Update Product', :class => "button" %>
+  </p>
+
+<% end %>

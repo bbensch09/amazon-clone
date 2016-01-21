@@ -1,0 +1,8 @@
+<h1>Editing Category</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Destroy', category_path(@category), :class => "button", method: :delete%>
+<br>
+
+<%= link_to 'Back to All Categories', categories_path,  :class => "crud-link" %>

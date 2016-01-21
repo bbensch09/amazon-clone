@@ -1,0 +1,8 @@
+<h1>Edit Product</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Destroy', product_path(@product), :class => "button",
+      method: :delete%> <br>
+      
+<%= link_to 'Back to All Products Overview', products_path %>

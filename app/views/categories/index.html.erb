@@ -1,0 +1,15 @@
+<h1> List of all Categories</h1>
+<% @categories.each do |category| %>
+<div>
+  <h2><%= link_to category.name , category_path(category), :class => "crud-link" %></h2>
+
+    <%= link_to 'Edit', edit_category_path(category), :class => "crud-link" %>
+
+<% end %>
+  <h1> Add More </h1>
+  <hr>
+  <div>
+    <%= link_to 'Create New Category', new_category_path, :class => "crud-link" %>
+  </div>
+
+</div>
