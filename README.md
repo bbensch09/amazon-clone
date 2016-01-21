@@ -1,4 +1,3 @@
-## Ye Olde Online Shoppe
 
 
 ### Overview
