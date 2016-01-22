@@ -39,13 +39,13 @@ class PaymentInfosController < ApplicationController
   def destroy
     @payment_info = PaymentInfo.find(params[:id])
     @payment_info.destroy
-    redirect_to payment_info_path
+    redirect_to "/payment_infos"
   end
 
 private
 
   def payment_info_params
-    params.require(:PaymentInfo).permit(:credit_card_hash, :expiration_hash, :cvc_hash, :name_on_card, :address_id)
+    params.require(:payment_info).permit(:credit_card_hash, :expiration_hash, :cvc_hash, :name_on_card, :address_id)
   end
 end
 

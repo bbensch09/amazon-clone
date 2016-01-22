@@ -1,10 +1,11 @@
-<h1> My saved addresses</h1>
+<h1> My saved payment Information</h1>
 <div>
-  <h2> <%= link_to 'Add Address', new_address_path, :class => "button" %></h2>
+  <h2> <%= link_to 'Add Payment Information', new_payment_info_path, :class => "button" %></h2>
 </div>
 
-<% @addresses.each do |address| %>
-    <%= render partial: 'show', locals: {address: address}%>
+<% @payment_infos.each do |payment_info| %>
+    <%= render partial: 'show', locals: {payment_info: payment_info}%>
+    <br>
 <% end %>
 
 </div>

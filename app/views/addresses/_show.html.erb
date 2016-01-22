@@ -1,9 +1,9 @@
 
 <% address = @address if @address %>
-<p><%= address.street_address %></p><br>
+<%= address.street_address %><br>
 <% if (address.street_address2 != nil) %>
-  <p><%= address.street_address2 %></p><br>
+  <%= address.street_address2 %><br>
   <% end %>
-<p><%= address.city %>, <%= address.state %> <%= address.zip %></p><br>
+<%= address.city %>, <%= address.state %> <%= address.zip %><br>
 
 
