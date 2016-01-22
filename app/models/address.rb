@@ -1,4 +1,4 @@
 class Address < ActiveRecord::Base
   belongs_to :user
-  belongs_to :payment_info
+  has_many :payment_infos
 end

@@ -4,8 +4,11 @@ require 'faker'
 User.delete_all
 Product.delete_all
 Category.delete_all
+PaymentInfo.delete_all
+Order.delete_all
+Address.delete_all
 
-#CREATE ADMIN
+#Default values
 
 def admin_params
   {
@@ -15,34 +18,12 @@ def admin_params
   }
 end
 
-User.create!(admin_params)
-
-#CREATE NON-ADMINS
-
 def unique_user
   {
   email: Faker::Internet.email,
   password: "12345"
   }
 end
-
-25.times do
-  User.create!(unique_user)
-end
-
-#CREATE DEFAULT categories
-
-def unique_category
-  {
-    name: Faker::Commerce.department(2)
-  }
-end
-
-10.times do
-  Category.create!(unique_category)
-end
-
-#CREATE DEFAULT products
 
 def unique_product
   {
@@ -52,72 +33,120 @@ def unique_product
   price: Faker::Commerce.price,
   inventory_quantity: rand(10),
   brand_id: (rand(9)+1),
-  category_id: (rand(9)+1),
   supplier_id: (rand(9)+1)
   }
 end
 
-100.times do
-  Product.create!(unique_product)
-end
-
-#CREATE DEFAULT orders
-
-def order
+def unique_category
   {
-  user_id: (rand(24)+1),
-  status: ['in_cart', 'ordered', 'delivered'].sample
+    name: Faker::Commerce.department(2)
   }
 end
 
-30.times do
-  Order.create!(order)
+def order
+  {
+  status: ['in_cart', 'ordered', 'delivered'].sample
+  }
 end
-
-#CREATE DEFAULT shopping cart items
 
 def shopping_cart_item
   {
   product_id: (rand(100)+1),
   quantity: (rand(3)+1),
-  order_id: (rand(10)+1),
-  user_id: (rand(24)+1)
   }
 end
-
-30.times do
-  ShoppingCartItem.create!(shopping_cart_item)
-end
-
-#CREATE DEFAULT payment info instances
 
 def payment_info
   {
-    user_id: (rand(24)+1),
     credit_card_hash: (rand(10000)).to_s,
     expiration_hash: (rand(10000)).to_s,
     name_on_card: Faker::Name.name,
-    address_id: (rand(10)+1),
     cvc_hash: (rand(2)+1).to_s
   }
 end
-
-30.times do
-  PaymentInfo.create!(payment_info)
-end
-
-#CREATE DEFAULT addresses
 
 def address
   {
     street_address: Faker::Address.street_address,
     city: Faker::Address.city,
     state: Faker::Address.state,
-    zip: Faker::Address.zip,
-    user_id: (rand(24)+1)
+    zip: Faker::Address.zip
   }
 end
 
-60.times do
-  Address.create!(address)
+#CREATE ADMINS
+User.create!(admin_params)
+
+#CREATE DEFAULT categories
+10.times do
+  category = Category.create!(unique_category)
+  end
+
+all_categories = Category.all
+
+#CREATE NON-ADMINS
+10.times do
+  user_instance = User.create!(unique_user)
+
+  #CREATE DEFAULT addresses
+  3.times do
+    address_instance = Address.create!(address)
+    user_instance.addresses << address_instance
+
+    #CREATE DEFAULT payment info instances
+    2.times do
+      payment_info_instance = PaymentInfo.create!(payment_info)
+      user_instance.payment_infos << payment_info_instance
+      address_instance.payment_infos << payment_info_instance
+    end
+  end
+
+  #CREATE DEFAULT orders
+  30.times do
+    order_instance = Order.create!(order)
+    user_instance.orders << order_instance
+
+    #CREATE products in order
+    5.times do
+      product_instance = Product.new(unique_product)
+      all_categories.sample.products << product_instance
+
+      #CREATE shopping cart items
+      5.times do
+        item_instance = ShoppingCartItem.create!(shopping_cart_item)
+        product_instance.shopping_cart_items << item_instance
+        user_instance.shopping_cart_items << item_instance
+        order_instance.shopping_cart_items << item_instance
+      end
+    end
+  end
+
+  #CREATE products in not in order
+  5.times do
+    product_instance = Product.new(unique_product)
+    all_categories.sample.products << product_instance
+
+    #CREATE DEFAULT shopping cart items
+
+    5.times do
+      ShoppingCartItem.create!(shopping_cart_item)
+      item_instance = ShoppingCartItem.create!(shopping_cart_item)
+      product_instance.shopping_cart_items << item_instance
+      user_instance.shopping_cart_items << item_instance
+    end
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
