@@ -1,0 +1,17 @@
+<% @products.each do |product| %>
+<div class="product small-up-2 large-up-4">
+    <%= image_tag(product.image_url) %>
+    <h4>
+      <a href="<%=product_path(product)%>"> <%= product.title %> </a>
+    </h4>
+    <h5>
+      Price: <%= number_to_currency(product.price, unit: "$", separator: ".", precision:2) %>
+    </h5>
+        <% if admin?  %>
+        <h5 class="admin-only">
+          <%= link_to 'Show', product_path(product), :class => "crud-link" %>
+          <%= link_to 'Edit', edit_product_path(product), :class => "crud-link" %>
+        </h5>
+        <% end %>
+</div>
+<% end %>

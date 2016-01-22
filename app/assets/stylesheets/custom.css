@@ -9,3 +9,20 @@
   max-width: 75em;
   margin: auto;
 }
+.admin-only {
+  font-size: .5em;
+}
+
+/*SLIDESHOW ORBIT OVERRIDES*/
+.orbit-slide {
+  display:none;
+}
+.is-active {
+  display:block;
+}
+.product {
+  display:inline-block;
+}
+.logo {
+  max-height:3em;
+}
