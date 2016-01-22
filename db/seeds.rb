@@ -66,7 +66,7 @@ end
 def order
   {
   user_id: (rand(24)+1),
-  status: ['in_cart', 'ordered', 'delivered']
+  status: ['in_cart', 'ordered', 'delivered'].sample
   }
 end
 
