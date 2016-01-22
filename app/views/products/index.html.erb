@@ -11,10 +11,12 @@
   <%= image_tag(product.image_url) %>
   Price: <%= number_to_currency(product.price, unit: "$", separator: ".", precision:2) %><br>
   <br>
-
+    
     <% if admin?  %>
-      <%= link_to 'Show', product_path(product), :class => "crud-link" %>
-      <%= link_to 'Edit', edit_product_path(product), :class => "crud-link" %>
+      <h5 class="admin-only">
+        <%= link_to 'Show', product_path(product), :class => "crud-link" %>
+        <%= link_to 'Edit', edit_product_path(product), :class => "crud-link" %>
+      </h5>
     <% end %>
 
 <% end %>
