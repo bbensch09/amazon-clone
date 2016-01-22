@@ -7,12 +7,19 @@
     <h1><%= @product.title %></h1><br>
     <h5><%= @product.description %></h5>
     <h3><strong><%= number_to_currency(@product.price, unit: "$", separator: ".", precision:2) %></strong></h3>
-    <h5>Quantity Available: <%= @product.inventory_quantity %></h5></p>
-    <%= link_to 'Buy it!', cart_path, :class => "success button" %>
+    <%= link_to 'Show Cart', cart_path, :class => "success button" %>
     <% if admin?  %>
     <%= link_to 'Edit Details', edit_product_path(@product), :class => "secondary button" %>
     <%= link_to 'Delete Product', product_path(@product), :class => "secondary button",
     method: :delete %><br>
+    <% end %>
+
+    <%= form_for :shopping_cart_item, url:'/cart' do |f| %>
+    <%= hidden_field_tag 'product_id', @product.id %>
+    <h5> <%= f.label :quantity, "Quantity" %>
+      <%= f.select :quantity, (1..@product.inventory_quantity) %>
+    </h5>
+    <%= f.submit 'Add to Cart', :class => "success button" %>
     <% end %>
   </div>
 </div>
@@ -20,3 +27,4 @@
 <div class="add_margin clear">
   <%= link_to '< Back to All Products', products_path,  :class => "button" %>
 </div>
+produ
