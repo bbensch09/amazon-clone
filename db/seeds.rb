@@ -79,8 +79,9 @@ end
 def shopping_cart_item
   {
   product_id: (rand(100)+1),
-  quantity_id: (rand(3)+1),
-  order_id: (rand(10)+1)
+  quantity: (rand(3)+1),
+  order_id: (rand(10)+1),
+  user_id: (rand(24)+1)
   }
 end
 
@@ -113,10 +114,10 @@ def address
     city: Faker::Address.city,
     state: Faker::Address.state,
     zip: Faker::Address.zip,
-    user_id: user_id: (rand(24)+1)
+    user_id: (rand(24)+1)
   }
 end
 
 60.times do
-  Address.create!(payment_info)
+  Address.create!(address)
 end
