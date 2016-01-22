@@ -23,6 +23,10 @@
         <ul class="menu button-group">
           <% if current_user %>
           <!-- <li> Welcome <%=current_user.email %></li> -->
+          <li>
+            <a href="/cart" class="btn btn-primary btn-success" data-toggle="modal" data-target="#shopping-cart"><i class="fi-shopping-cart"></i> Cart <span class="badge"><%= current_user.orders.last.shopping_cart_items.count %></span>
+            </a>
+          </li>
           <li class="button small"><%= link_to "Log out", destroy_user_session_path, :method => :delete %> </li>
           <li class="secondary button small"><%= link_to "Manage Users", users_path if current_user.admin? %></li>
           <% else %>
@@ -33,8 +37,30 @@
       </div>
     </div>
   </div>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if flash[:notice] %>
+  <center>
+    <div class="alert alert-info" data-dismiss="alert" role="alert">
+      <%= flash[:notice] %>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  </center>
+<% end %>
+<% if flash[:error] %>
+  <center>
+    <div class="alert alert-danger" data-dismiss="alert" role="alert">
+      <%= flash[:error] %>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  </div>
+  </center>
+<% end %>
+  <% if flash[:success] %>
+    <center>
+      <div class="alert alert-success" data-dismiss="alert" role="alert">
+        <%= flash[:success] %>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    </center>
+  <% end %>
 
   <div class="container">
     <%= yield %>

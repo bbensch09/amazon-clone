@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'cart' => 'shopping_cart_items#show'
   post 'cart' => 'shopping_cart_items#add_item'
+  delete 'cart' => 'shopping_cart_items#remove_item'
 
   get 'checkout' => 'checkout#checkout'
   post 'checkout' => 'checkout#save_checkout'
