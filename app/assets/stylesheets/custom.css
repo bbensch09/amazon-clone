@@ -1,4 +1,8 @@
-
+@media screen and (min-width: 40em) {
+  .title-bar {
+    display:none;
+  }
+}
 
 .top-bar a {
   color: #fff;
@@ -26,3 +30,6 @@
 .logo {
   max-height:3em;
 }
+.button.secondary {
+  background-color: #fff;
+  color: #fff; }
