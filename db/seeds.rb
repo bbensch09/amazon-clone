@@ -74,30 +74,29 @@ def address
   }
 end
 
-#CREATE ADMINS
-User.create!(admin_params)
 
 #CREATE DEFAULT categories
-10.times do
+8.times do
   category = Category.create!(unique_category)
   end
 
 all_categories = Category.all
 
 #CREATE NON-ADMINS
-10.times do
+5.times do
   user_instance = User.create!(unique_user)
 
   #CREATE DEFAULT addresses
-  3.times do
+  2.times do
     address_instance = Address.create!(address)
     user_instance.addresses << address_instance
 
     #CREATE DEFAULT orders
-    3.times do
+    2.times do
       order_instance = Order.create!(order)
       user_instance.orders << order_instance
       order_instance.address_id = address_instance.id
+      order_instance.save
 
       #CREATE DEFAULT payment info instances
       1.times do
@@ -108,12 +107,12 @@ all_categories = Category.all
 
 
       #CREATE products in order
-      5.times do
+      2.times do
         product_instance = Product.new(unique_product)
         all_categories.sample.products << product_instance
 
         #CREATE shopping cart items
-        5.times do
+        2.times do
           item_instance = ShoppingCartItem.create!(shopping_cart_item)
           product_instance.shopping_cart_items << item_instance
           user_instance.shopping_cart_items << item_instance
@@ -121,25 +120,31 @@ all_categories = Category.all
         end
       end
     end
-    # assign one active cart
-    user_instance.orders.first.status = 'in_cart'
   end
 
   #CREATE products in not in order
-  5.times do
+  2.times do
     product_instance = Product.new(unique_product)
     all_categories.sample.products << product_instance
 
     #CREATE DEFAULT shopping cart items
 
-    5.times do
+    2.times do
       ShoppingCartItem.create!(shopping_cart_item)
       item_instance = ShoppingCartItem.create!(shopping_cart_item)
       product_instance.shopping_cart_items << item_instance
       user_instance.shopping_cart_items << item_instance
     end
   end
+
+  # assign one active cart
+  user_instance.orders.first.update(status: 'in_cart')
+  # p user_instance.orders.first.status
+  # p user_instance.save
 end
+
+#CREATE ADMINS
+User.first.update(admin_params)
 
 
 
