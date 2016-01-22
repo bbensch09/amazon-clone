@@ -1,0 +1,11 @@
+<h1>Order completely successfully!</h1>
+
+<h3>Review details</h3>
+<hr>
+<h5>Products</h5>
+<hr>
+<h5>Address</h5>
+<%= render partial: 'addresses/show', locals: {address: @address}%>
+<hr>
+<h5>Payment</h5>
+<%= render partial: 'payment_infos/show', locals: {payment_info: @payment_info}%>

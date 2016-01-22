@@ -1,11 +1,13 @@
 <h1> Enter your credentials</h1>
-
-<%= form_tag(controller: "checkout", action: "save_checkout", method: "post", class: "") %>
+<hr>
+<%= form_tag(controller: "checkout", action: "save_checkout", method: "post", class: "") do %>
   <h4> Select address</h4>
   <table>
     <% @addresses.each do |address| %>
     <tr>
-      <td><input type="radio" name="address_id" value="<% address.id %>"></td>
+      <td>
+        <%= radio_button_tag(:address_id, address.id) %>
+      </td>
       <td>
         <%= render partial: 'addresses/show', locals: {address: address}%>
       </td>
@@ -13,14 +15,14 @@
   </table>
 
   <%= link_to 'New Address', new_address_path, :class => "button" %>
-
+<hr>
 <h4> Select payment details</h4>
-
-  <h4> Select Payment</h4>
   <table>
     <% @payment_infos.each do |payment_info| %>
     <tr>
-      <td><input type="radio" name="payment_info_id" value="<% payment_info.id %>"></td>
+      <td>
+        <%= radio_button_tag(:payment_info_id, payment_info.id) %>
+      </td>
       <td>
         <%= render partial: 'payment_infos/show', locals: {payment_info: payment_info}%>
       </td>
@@ -28,5 +30,6 @@
   </table>
 
   <%= link_to 'New payment_info', new_payment_info_path, :class => "button" %>
-
-</form>
+  <hr>
+  <input type="submit" value="Complete Order" class="button success">
+<% end %>
