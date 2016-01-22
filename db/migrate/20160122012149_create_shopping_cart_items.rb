@@ -5,6 +5,7 @@ class CreateShoppingCartItems < ActiveRecord::Migration
       t.integer :product_id
       t.integer :user_id
       t.integer :order_id
+      t.decimal :final_item_price, :scale => 2, :precision => 10
       t.timestamps null: false
     end
   end
