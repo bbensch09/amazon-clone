@@ -1,6 +1,4 @@
 <h1> Today's Top Deals on Abezon.com </h1>
-<!-- <a href="www.google.com">Link to Google</a> -->
-
 <% if admin?  %>
 <div class="row">
   <%= link_to 'Create New Category (Admins only)', new_category_path, :class => "crud-link" %>
@@ -50,8 +48,7 @@
     </div>
   </div>
 <hr>
-<div class="row">
 
-    <!-- %= render 'shared/product_list' %> -->
+<div class="row">
     <%= render partial: 'shared/product_list', locals: {products: @products} %>
 </div>

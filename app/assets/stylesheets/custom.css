@@ -23,3 +23,6 @@
 .product {
   display:inline-block;
 }
+.logo {
+  max-height:3em;
+}
