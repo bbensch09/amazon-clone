@@ -5,7 +5,6 @@ class CreatePaymentInfos < ActiveRecord::Migration
       t.string :expiration_hash, null: false
       t.string :cvc_hash, null: false
       t.string :name_on_card, null: false
-      t.integer :address_id
       t.integer :user_id
       t.timestamps null: false
     end

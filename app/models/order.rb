@@ -2,6 +2,8 @@ class Order < ActiveRecord::Base
   has_many :shopping_cart_items
   belongs_to :user
   belongs_to :payment_info
+  belongs_to :address
+
 
   def order_total
     sum = 0
@@ -10,4 +12,5 @@ class Order < ActiveRecord::Base
     end
     sum
   end
+
 end

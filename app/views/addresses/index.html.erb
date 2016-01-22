@@ -1,0 +1,11 @@
+<h1> My saved addresses</h1>
+<div>
+  <h2> <%= link_to 'Add Address', new_address_path, :class => "button" %></h2>
+</div>
+
+<% @addresses.each do |address| %>
+    <%= render partial: 'show', locals: {address: address}%>
+    <br>
+<% end %>
+
+</div>

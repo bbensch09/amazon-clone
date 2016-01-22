@@ -1,0 +1,9 @@
+
+<% address = @address if @address %>
+<%= address.street_address %><br>
+<% if (address.street_address2 != nil) %>
+  <%= address.street_address2 %><br>
+  <% end %>
+<%= address.city %>, <%= address.state %> <%= address.zip %><br>
+
+
