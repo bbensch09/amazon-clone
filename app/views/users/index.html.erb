@@ -1,17 +1,23 @@
 <h1> List of all Users</h1>
-<% @users.each do |user| %>
-<div>
-  Email: <%= user.email %><br>
-  Admin?: <%= user.admin? %><br>
-  <br>
-  <%= link_to 'Show', user_path(user), :class => "crud-link" %>
-  <%= link_to 'Edit', edit_user_path(user), :class => "crud-link" %>
-  <%= link_to 'Destroy', user_path(user), :class => "crud-link",
-        method: :delete,
-        data: { confirm: 'Are you sure?'} %>
-  <% end %>
-  <div>
-    <%= link_to 'Create New User', new_user_registration_path, :class => "crud-link" %>
-  </div>
-
-</div>
+<%= link_to 'Create New User', new_user_registration_path, :class => "button" %>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Email</th>
+      <th>Admin?</th>
+      <th width="150">Edit</th>
+      <th width="150">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><a href="<%= user_path(user) %>" ><%= user.email %></a></td>
+        <td><%= user.admin? %></td>
+        <td><%= link_to 'Edit', edit_user_path(user), :class => "button" %></td>
+        <td><%= link_to 'Destroy', user_path(user), :class => "button",
+              method: :delete,
+              data: { confirm: 'Are you sure?'} %></td>
+      </tr>
+      <% end %>
+</table>
