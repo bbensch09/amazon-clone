@@ -2,41 +2,17 @@
 <html>
 <head>
   <title>Abezon</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+  <%= javascript_include_tag 'application' %>
+  <!-- 'data-turbolinks-track' => true -->
   <%= csrf_meta_tags %>
+
 </head>
 <body>
-  <div class="top-bar">
-    <div class="container">
-      <div class="top-bar-left">
-        <a href="/"><img src="https://s-media-cache-ak0.pinimg.com/236x/48/97/d3/4897d377aa1154f8b3e5b32cd3b25804.jpg" alt="logo" class="logo"></a>
-      </div>
-      <div class="top-bar-left">
-        <ul class="menu button-group">
-          <li class="button small"><a href="/categories">Categories</a></li>
-          <li class="button small"><a href="/products">Products</a></li>
-        </ul>
-      </div>
-      <div class="top-bar-right">
-        <ul class="menu button-group">
-          <% if current_user %>
-          <!-- <li> Welcome <%=current_user.email %></li> -->
-          <li>
-            <a href="/cart" class="btn btn-primary btn-success" data-toggle="modal" data-target="#shopping-cart"><i class="fi-shopping-cart"></i> Cart <span class="badge"><%= current_user.orders.last.shopping_cart_items.count %></span>
-            </a>
-          </li>
-          <li class="button small"><%= link_to "Log out", destroy_user_session_path, :method => :delete %> </li>
-          <li class="secondary button small"><%= link_to "Manage Users", users_path if current_user.admin? %></li>
-          <% else %>
-          <li class="button small"><%= link_to "Log in", new_user_session_path %> </li>
-          <li class="button small"><%= link_to "Sign Up", new_user_registration_path %> </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <%= render 'layouts/nav' %>
   <% if flash[:notice] %>
   <center>
     <div class="alert alert-info" data-dismiss="alert" role="alert">
@@ -66,4 +42,8 @@
     <%= yield %>
   </div>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js"></script>
+
 </html>

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="title-bar" data-responsive-toggle="realEstateMenu" data-hide-for="small">
+    <button class="menu-icon" type="button" data-toggle></button>
+    <div class="title-bar-title">Menu</div>
+  </div>
+  <div class="top-bar" id="realEstateMenu">
+    <div class="top-bar-left">
+      <ul class="menu" data-responsive-menu="accordion">
+        <li class="menu-text">
+          <a href="/"><img src="https://s-media-cache-ak0.pinimg.com/236x/48/97/d3/4897d377aa1154f8b3e5b32cd3b25804.jpg" alt="logo" class="logo"></a>
+        </li>
+        <li class="menu-text"><a href="/">Home</a></li>
+        <li><a href="/categories">Shop Categories</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <% if current_user %>
+        <!-- <li> Welcome <%=current_user.email %></li> -->
+        <li>
+          <a href="/cart" class="btn btn-primary btn-success" data-toggle="modal" data-target="#shopping-cart"><i class="fi-shopping-cart"></i> Cart <span class="badge"><%= current_user.orders.last.shopping_cart_items.count %></span>
+          </a>
+        </li>
+        <li class="button small"><%= link_to "Log out", destroy_user_session_path, :method => :delete %> </li>
+        <li class="button small secondary"><%= link_to "Manage Users", users_path if current_user.admin? %></li>
+        <% else %>
+        <li class="button small"><%= link_to "Log in", new_user_session_path %> </li>
+        <li class="button small"><%= link_to "Sign Up", new_user_registration_path %> </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+<%= render 'cart', locals: {shopping_cart_items: @shopping_cart_items} %>
 <h1> Enter your credentials</h1>
 <hr>
 <%= form_tag(controller: "checkout", action: "save_checkout", method: "post", class: "") do %>

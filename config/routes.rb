@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'categories#index'
 
-  get 'cart' => 'shopping_cart_items#show'
-  post 'cart' => 'shopping_cart_items#add_item'
-  delete 'cart' => 'shopping_cart_items#remove_item'
-
+  get 'cart' => 'checkout#show'
+  post 'cart' => 'checkout#add_item'
+  delete 'cart' => 'checkout#remove_item'
   get 'checkout' => 'checkout#checkout'
   post 'checkout' => 'checkout#save_checkout'
 
