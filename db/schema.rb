@@ -11,15 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120032927) do
+ActiveRecord::Schema.define(version: 20160122012230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "street_address",  null: false
+    t.string   "street_address2"
+    t.string   "city",            null: false
+    t.string   "state",           null: false
+    t.string   "zip",             null: false
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "status",     null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payment_infos", force: :cascade do |t|
+    t.string   "credit_card_hash", null: false
+    t.string   "expiration_hash",  null: false
+    t.string   "cvc_hash",         null: false
+    t.string   "name_on_card",     null: false
+    t.integer  "address_id"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "products", force: :cascade do |t|
@@ -33,6 +62,15 @@ ActiveRecord::Schema.define(version: 20160120032927) do
     t.integer  "category_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+  end
+
+  create_table "shopping_cart_items", force: :cascade do |t|
+    t.integer  "quantity",   null: false
+    t.integer  "product_id"
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
