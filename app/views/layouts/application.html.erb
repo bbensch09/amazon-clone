@@ -11,31 +11,24 @@
   <div class="top-bar">
     <div class="container">
       <div class="top-bar-left">
-        <ul class="dropdown menu" data-dropdown-menu>
-          <li class="menu-text">Brital.ly</li>
-          <li class="has-submenu">
-            <a href="#">Cat #1</a>
-            <ul class="submenu menu vertical" data-submenu>
-              <li><a href="/categories/1">Pants</a></li>
-              <li><a href="/categories/2">Shoes</a></li>
-              <li><a href="/categories/3">Shirts</a></li>
-            </ul>
-          </li>
-          <li><a href="/products">View all Products</a></li>
-          <li><a href="/categories">View all Categories</a></li>
+        <a href="/"><span class="menu-text">Amazon Clone</span></a>
+      </div>
+      <div class="top-bar-left">
+        <ul class="menu button-group">
+          <li class="button small"><a href="/categories">Categories</a></li>
+          <li class="button small"><a href="/products">Products</a></li>
         </ul>
       </div>
       <div class="top-bar-right">
-        <ul class="menu">
+        <ul class="menu button-group">
           <% if current_user %>
-          <li> Welcome <%=current_user.email %></li>
-          <%= link_to "Manage Users", users_path, :class => "button" if current_user.admin? %>
-          <li><%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "button" %> </li>
+          <!-- <li> Welcome <%=current_user.email %></li> -->
+          <li class="button small"><%= link_to "Log out", destroy_user_session_path, :method => :delete %> </li>
+          <li class="secondary button small"><%= link_to "Manage Users", users_path if current_user.admin? %></li>
           <% else %>
-          <li><%= link_to "Log in", new_user_session_path, :class => "button" %> </li>
-          <li><%= link_to "Sign Up", new_user_registration_path, :class => "button" %> </li>
+          <li class="button small"><%= link_to "Log in", new_user_session_path %> </li>
+          <li class="button small"><%= link_to "Sign Up", new_user_registration_path %> </li>
           <% end %>
-
         </ul>
       </div>
     </div>

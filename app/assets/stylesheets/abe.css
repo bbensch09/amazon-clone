@@ -1,0 +1,31 @@
+.container {
+  padding: 5px 20px;
+}
+
+.secondary {
+  background-color: gray;
+  color: white;
+}
+
+.clear {
+  clear: both;
+  display: block;
+}
+
+
+.center {
+  text-align: center;
+}
+
+.add_margin {
+  margin: 20px;
+  padding: 20px;
+}
+
+.product {
+  padding-top: 15px;
+}
+
+.menu li {
+  padding: 0px;
+}

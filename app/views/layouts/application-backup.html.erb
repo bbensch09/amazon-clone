@@ -15,14 +15,14 @@
           <li class="menu-text">Brital.ly</li>
           <li class="has-submenu">
             <a href="#">Cat #1</a>
-            <ul class="submenu menu vertical" data-submenu>
+            <ul class="dropdown menu" data-submenu>
               <li><a href="/categories/1">Pants</a></li>
               <li><a href="/categories/2">Shoes</a></li>
               <li><a href="/categories/3">Shirts</a></li>
             </ul>
           </li>
-          <li><a href="/products">View all Products</a></li>
-          <li><a href="/categories">View all Categories</a></li>
+          <li><a href="/categories">Categories</a></li>
+          <li><a href="/products">Products</a></li>
         </ul>
       </div>
       <div class="top-bar-right">
@@ -32,8 +32,8 @@
           <%= link_to "Manage Users", users_path, :class => "button" if current_user.admin? %>
           <li><%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "button" %> </li>
           <% else %>
-          <li><%= link_to "Log in", new_user_session_path, :class => "button" %> </li>
-          <li><%= link_to "Sign Up", new_user_registration_path, :class => "button" %> </li>
+          <li><%= link_to "Log in", new_user_session_path, :class => "button small" %> </li>
+          <li><%= link_to "Sign Up", new_user_registration_path, :class => "button small" %> </li>
           <% end %>
 
         </ul>

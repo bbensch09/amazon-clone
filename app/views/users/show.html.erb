@@ -1,20 +1,32 @@
-<p>
-  <strong> Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong> Logged in from:</strong>
-  <%= @user.current_sign_in_ip %>
-</p>
-
-<% if current_user.admin?  %>
-  <p>
-    <strong> Admin?</strong>
-    <%= @user.admin? %>
-  </p>
-
-<% end %>
 
 
-<%= link_to 'Edit', edit_user_path(@user), :class => "crud-link" %>
+
+<div class="row">
+  <div class="product small-12 medium-4 large-4 columns">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NEA4PEA0ODA0MEg0NDQ0OCxAIDwsNFBEWFhUVExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDg0OFxAQGCwcHCAvKywrLCwsLCwsLCwsLDcrLDcsLCw3KzcsKyw3Kys3Kys3KysrKysrKysrKysrKysrK//AABEIAMwAzAMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EACwQAQACAAUDAwMEAwEAAAAAAAABAgMEBREhMUFRImFxEjKhM4GRsUJSchP/xAAYAQEAAwEAAAAAAAAAAAAAAAAAAQIDBP/EABsRAQEBAQEBAQEAAAAAAAAAAAABAhExIVED/9oADAMBAAIRAxEAPwD6IA6WQAAAAAAAAAAM1rM9I3dOFkMW3+MxE95R1LlElXR797Q4s1hRSdot9XkllONQCUAAAAAAAAAAAAAAAAAViZ4jmZTGQ0zba1+v+vhFsiZOuDLZLExOkbR5nok8DSqV+71T47JCIiOnDLK7tXmWvDwa14isQ2Aolrx6zNZiJ2mY4lWcbDtWZi0TE+61NGaytcWNp4ntPhfOuIs6rI35vK2wp5jjtPloaswBIAAAAAAAAAAAAA94Fd7VjzMf2CX0rJxWIvaPVPT2hJvNK7REeOHpz29rSACEgAAANePhVvExMdVbzWBOHaa+Oi0IjXMP7bfsvi/eK6iJAbKAAAAAAAAAAAADfkY3xK/LQ6Mh+pX5RfExZQHO0AAAAAAEdrceiPmEijtb/Tj/AKhbPqL4gwG7MAAAAAAAAAAAAbsn99fmGlsyv31+Y/tFStIDnaAAAAAACN1yfRHzCSReuT6a/K2fUXxDAN2YAAAAAAAAAAAAlNErWZtvETMbbeyLSGi32vMeVdeJnqdAYNAAAAAABpzdazS28RO0Nzm1G22Hb3jZM9Fbt1kB0MgAAAAAAAAAAAB06fixTErM9On8uYRRbInfmOjLj0rE+rDj24djCzjUAQAAAACN1nGiK/TvzM9PZJK1qGJ9WJae26+J2o05wGzMAAAAAAAAAAAAABKaJjbTNZ79EyquBizS0Wjss2BixesWjux3PvV81sAUWAAAAas1ifRS1vEKvad5mfPKU1nNbz/5x26/KLbYnIpqgC6oAAAAAAAAAAAAAAsOlfpx8yryy5Cu2HX3iJZ/08Wy6AGS4AAACt6l+rf5czs1au2JafLjdE8Z0ASgAAAAAAAAAAAAAB2aZlYxbTv0qn6VisREdI4hH6JhbVm3+3H8JJju/WkAFEgAAAOHUspW9Zt/lWOEAtl43iY8qtj0mtrRPaZa4qmngYZaKgAAAAAAADDLNazPERvIMDuy+mYl+Z9Me/VJ5fTsOnO31T5lW7kTIhcDJ4mJ0jjzPEJTLaVWvN/VPjskYiI6Rt+GWd3avMvNKxWNojaIegUSAAAAAAObM5KmJ1jafLpDogszpd6819UflwWrMcTG0rY1Y2XpfiaxP4aTf6rcqsylsxpHek/tPCOxsven3VmPfsvNSq8agFkAAD3hYVrztWJl25HTpv6rcV8eUzhYNaRtWIhTW+LTKLy+kT1vO3tHKSwctSnSsf23DK6tWkAEJAAAAAAAAAAAAAAGLViesRPzG7IDgzGl0t09M/yi8xkMTD7bx5jlY2JhabsRYqYns5ptb819NvxKDxcK1JmsxtMNZqVSzi1RGzIMGgAAAAAAAAAAAAAAAAAAAAAA8Xwq25mImfjd7Af/2Q==">
+  </div>
+  <div class="product small-12 medium-8 large-8 columns">
+
+    <p>
+      <strong> Email:</strong>
+      <%= @user.email %>
+    </p>
+
+    <p>
+      <strong> Logged in from:</strong>
+      <%= @user.current_sign_in_ip %>
+    </p>
+
+    <% if current_user.admin?  %>
+      <p>
+        <strong> Admin?</strong>
+        <%= @user.admin? %>
+      </p>
+
+    <% end %>
+  </div>
+</div>
+<hr>
+<div class="add_margin clear">
+  <%= link_to 'Edit', edit_user_path(@user), :class => "button" %>
+</div>
