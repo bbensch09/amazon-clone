@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root to: 'categories#index'
 
+  get 'cart' => 'shopping_cart_items#show'
+  post 'cart' => 'shopping_cart_items#add_item'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

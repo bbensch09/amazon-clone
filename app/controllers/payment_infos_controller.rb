@@ -1,0 +1,3 @@
+class PaymentInfosController < ApplicationController
+end
+asdfasdfasdfas

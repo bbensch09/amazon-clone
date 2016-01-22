@@ -1,0 +1,15 @@
+<h1> Shopping cart for <%= @user.email %> </h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th> Item Name </th>
+      <th> Quantity </th>
+      <th> Price </th>
+    </tr>
+  </thead>
+  <%  @shopping_cart_items.each do |shopping_cart_item| %>
+    <tr>
+      <td> <%= shopping_cart_item.product %> </td>
+    </tr>
+  <% end %>
+</table>
