@@ -1,0 +1,6 @@
+
+<% payment_info = @payment_info if @payment_info %>
+Name: <%= payment_info.name_on_card %><br>
+Credit Card: <%= payment_info.credit_card_hash %><br>
+Expiration: <%= payment_info.expiration_hash %><br>
+CVC: <%= payment_info.cvc_hash %><br>

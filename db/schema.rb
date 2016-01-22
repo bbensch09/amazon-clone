@@ -34,10 +34,12 @@ ActiveRecord::Schema.define(version: 20160122012230) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string   "status",     null: false
+    t.string   "status",          null: false
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "payment_info_id"
+    t.integer  "address_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "payment_infos", force: :cascade do |t|
@@ -45,7 +47,6 @@ ActiveRecord::Schema.define(version: 20160122012230) do
     t.string   "expiration_hash",  null: false
     t.string   "cvc_hash",         null: false
     t.string   "name_on_card",     null: false
-    t.integer  "address_id"
     t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -65,12 +66,13 @@ ActiveRecord::Schema.define(version: 20160122012230) do
   end
 
   create_table "shopping_cart_items", force: :cascade do |t|
-    t.integer  "quantity",   null: false
+    t.integer  "quantity",                                  null: false
     t.integer  "product_id"
     t.integer  "user_id"
     t.integer  "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.decimal  "final_item_price", precision: 10, scale: 2
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "users", force: :cascade do |t|

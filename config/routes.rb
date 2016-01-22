@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   post 'cart' => 'shopping_cart_items#add_item'
   delete 'cart' => 'shopping_cart_items#remove_item'
 
+  get 'checkout' => 'checkout#checkout'
+  post 'checkout' => 'checkout#save_checkout'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -19,6 +22,8 @@ Rails.application.routes.draw do
     resources :products
     resources :categories
     resources :users
+    resources :addresses
+    resources :payment_infos
     devise_for :users, :path_prefix => 'd'
 
   # Example resource route with options:

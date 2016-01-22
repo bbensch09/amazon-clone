@@ -1,0 +1,32 @@
+<%= form_for @payment_info do |f| %>
+  <% if @payment_info.errors.any? %>
+    <div id="error_explanation">
+      <h2> <%= pluralize(@payment_info.errors.count, "error") %> Prevented this product from being saved:</h2>
+      <ul>
+        <% @payment_info.errors.full_messages.each do |msg| %>
+          <li class="errors"> <%= msg %> </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :credit_card_hash, "Credit Card Number" %> <br>
+    <%= f.text_field :credit_card_hash %>
+  </p>
+  <p>
+    <%= f.label :expiration_hash, "Expiration date" %> <br>
+    <%= f.text_field :expiration_hash %>
+  </p>
+  <p>
+    <%= f.label :cvc_hash, "CVC" %> <br>
+    <%= f.text_field :cvc_hash %>
+  </p>
+  <p>
+    <%= f.label :name_on_card, "Name on Card" %> <br>
+    <%= f.text_field :name_on_card %>
+  </p>
+    <%= f.submit 'Save', :class => "button" %>
+  </p>
+
+<% end %>
