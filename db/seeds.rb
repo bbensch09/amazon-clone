@@ -45,7 +45,7 @@ end
 
 def order
   {
-  status: ['in_cart', 'ordered', 'delivered'].sample
+  status: ['ordered', 'delivered'].sample
   }
 end
 
@@ -93,32 +93,36 @@ all_categories = Category.all
     address_instance = Address.create!(address)
     user_instance.addresses << address_instance
 
-    #CREATE DEFAULT payment info instances
-    2.times do
-      payment_info_instance = PaymentInfo.create!(payment_info)
-      user_instance.payment_infos << payment_info_instance
-      address_instance.payment_infos << payment_info_instance
-    end
-  end
+    #CREATE DEFAULT orders
+    3.times do
+      order_instance = Order.create!(order)
+      user_instance.orders << order_instance
+      order_instance.address_id = address_instance.id
 
-  #CREATE DEFAULT orders
-  30.times do
-    order_instance = Order.create!(order)
-    user_instance.orders << order_instance
+      #CREATE DEFAULT payment info instances
+      1.times do
+        payment_info_instance = PaymentInfo.create!(payment_info)
+        user_instance.payment_infos << payment_info_instance
+        order_instance.payment_info_id = payment_info_instance.id
+      end
 
-    #CREATE products in order
-    5.times do
-      product_instance = Product.new(unique_product)
-      all_categories.sample.products << product_instance
 
-      #CREATE shopping cart items
+      #CREATE products in order
       5.times do
-        item_instance = ShoppingCartItem.create!(shopping_cart_item)
-        product_instance.shopping_cart_items << item_instance
-        user_instance.shopping_cart_items << item_instance
-        order_instance.shopping_cart_items << item_instance
+        product_instance = Product.new(unique_product)
+        all_categories.sample.products << product_instance
+
+        #CREATE shopping cart items
+        5.times do
+          item_instance = ShoppingCartItem.create!(shopping_cart_item)
+          product_instance.shopping_cart_items << item_instance
+          user_instance.shopping_cart_items << item_instance
+          order_instance.shopping_cart_items << item_instance
+        end
       end
     end
+    # assign one active cart
+    user_instance.orders.first.status = 'in_cart'
   end
 
   #CREATE products in not in order

@@ -4,6 +4,7 @@ class CreateOrders < ActiveRecord::Migration
       t.string :status, null: false
       t.integer :user_id
       t.integer :payment_info_id
+      t.integer :address_id
       t.timestamps null: false
     end
   end

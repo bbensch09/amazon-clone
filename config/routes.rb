@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :users
     resources :addresses
+    resources :payment_infos
     devise_for :users, :path_prefix => 'd'
 
   # Example resource route with options:
