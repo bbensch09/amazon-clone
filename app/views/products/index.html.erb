@@ -3,8 +3,20 @@
   <h2> <%= link_to 'Create New Product', new_product_path, :class => "crud-link" %></h2>
 </div>
 
-<div class="row">
-    <%= render partial: 'shared/product_list', locals: {products: @products} %>
-</div>
+<% @products.each do |product| %>
+<div>
+   <h4>
+    Title: <a href="<%=product_path(product)%>"> <%= product.title %> </a><br>
+    </h4>
+  <%= image_tag(product.image_url) %>
+  Price: <%= number_to_currency(product.price, unit: "$", separator: ".", precision:2) %><br>
+  <br>
+
+    <% if admin?  %>
+      <%= link_to 'Show', product_path(product), :class => "crud-link" %>
+      <%= link_to 'Edit', edit_product_path(product), :class => "crud-link" %>
+    <% end %>
+
+<% end %>
 
 </div>
