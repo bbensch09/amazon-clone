@@ -8,7 +8,7 @@
     <h5><%= @product.description %></h5>
     <h3><strong><%= number_to_currency(@product.price, unit: "$", separator: ".", precision:2) %></strong></h3>
     <h5>Quantity Available: <%= @product.inventory_quantity %></h5></p>
-    <%= link_to 'Buy it!', edit_product_path(@product), :class => "success button" %>
+    <%= link_to 'Buy it!', cart_path, :class => "success button" %>
     <% if admin?  %>
     <%= link_to 'Edit Details', edit_product_path(@product), :class => "secondary button" %>
     <%= link_to 'Delete Product', product_path(@product), :class => "secondary button",
