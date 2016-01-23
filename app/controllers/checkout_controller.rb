@@ -30,6 +30,7 @@ class CheckoutController < ApplicationController
     else
     render 'checkout/cart'
     end
+    # return{amount: item_price_to_deduct}.to_json
   end
 
   def checkout

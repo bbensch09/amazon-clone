@@ -21,7 +21,8 @@ var bindClickListener = function() {
       $(row_to_remove).closest('.item-row').fadeOut(500);
       var cart_price = parseInt($('.item-total').text());
       console.log("The original price was "+cart_price);
-      console.log("The amount to deduct is "+response.price_deducted);
+      console.log("The amount to deduct is "+response.price);
+      // console.log("The amount to deduct is "+parseInt(response));
     });
   });
 }
