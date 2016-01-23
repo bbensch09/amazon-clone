@@ -31,7 +31,7 @@ def unique_product
   description: Faker::Hipster.sentence(10),
   image_url: Faker::Avatar.image,
   price: Faker::Commerce.price,
-  inventory_quantity: rand(10),
+  inventory_quantity: (rand(10)+1),
   brand_id: (rand(9)+1),
   supplier_id: (rand(9)+1)
   }
@@ -145,17 +145,3 @@ end
 
 #CREATE ADMINS
 User.first.update(admin_params)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
