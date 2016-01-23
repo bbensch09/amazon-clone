@@ -32,4 +32,12 @@
 }
 .button.secondary {
   background-color: #fff;
-  color: #fff; }
+  color: #fff;
+}
+.test-button{
+  background-color: #000;
+  color: #fff;
+}
+.hide{
+  display:none;
+}

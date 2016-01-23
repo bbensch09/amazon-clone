@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgres as the database for Active Record
@@ -53,7 +53,7 @@ group :development, :test do
   #factory girl gem
   gem 'factory_girl_rails'
   #faker gem
-  gem 'faker'
+  # gem 'faker'
   #simplecov test to see how many lines of code are being tested
   gem 'simplecov', :require => false
 end
