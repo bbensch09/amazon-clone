@@ -21,7 +21,7 @@
         <% if current_user %>
         <!-- <li> Welcome <%=current_user.email %></li> -->
         <li>
-          <a href="/cart" class="btn btn-primary btn-success" data-toggle="modal" data-target="#shopping-cart"><i class="fi-shopping-cart"></i> Cart <span class="badge"><%= current_user.orders.last.shopping_cart_items.count %></span>
+          <a href="/cart" class="btn btn-primary btn-success" data-toggle="modal" data-target="#shopping-cart"><i class="fi-shopping-cart"></i> Cart <span class="badge"><%= current_user.orders.find_by(status: 'in_cart').shopping_cart_items.count %></span>
           </a>
         </li>
         <li class="button small"><%= link_to "Log out", destroy_user_session_path, :method => :delete %> </li>
